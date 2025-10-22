@@ -5,6 +5,7 @@
       "Bash(git rm:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
+      "Bash(git stash push:*)",
       "Bash(mkdir ./:*)",
       "Bash(mkdir -p ./:*)",
       "mcp__serena__check_onboarding_performed",
@@ -35,10 +36,10 @@
     "deny": [
       "Bash(sudo:*)",
       "Bash(rm:*)",
-      "Bash(rm -r:*)",
-      "Bash(rm -rf:*)",
-      "Bash(git push:*)",
+      "Bash(unlink:*)",
+      "Bash(git rm:*)",
       "Bash(git reset:*)",
+      "Bash(git push:*)",
       "Read(id_rsa)",
       "Read(id_ed25519)",
       "Read(*.local*)"
