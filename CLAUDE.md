@@ -4,7 +4,6 @@
 
 - **Parallel Execution**: Execute independent processes concurrently
 - **Agent Priority**: Prioritize using Agents whenever possible for all tasks
-- **search_docs slash command**: Use search_docs slash command
 - **Planning**: Create execution plans as a general principle
 
 ## Language Rules
@@ -26,3 +25,16 @@
 
 - **serena MCP Priority**: When serena MCP is available, use serena MCP tools for code search and analysis
 
+### File Deletion Rules
+
+- **Use git stash instead of rm**: Never use `rm`, `unlink`, or `git rm` commands directly
+- **Stash with descriptive message**: Always use `git stash push -m "message" -- <files>` with a descriptive message
+- **Mandatory title template**: Use the following template for stash messages:
+
+  ```text
+  [Claude Code Deletion] <reason>
+  Files: <file1>, <file2>, ...
+  ```
+
+  - Example: `[Claude Code Deletion] Remove deprecated API endpoints`
+  - Example: `[Claude Code Deletion] Clean up unused test fixtures`
