@@ -27,9 +27,12 @@
 
 ### File Deletion Rules
 
-- **Use git stash instead of rm**: Never use `rm`, `unlink`, or `git rm` commands directly
-- **Stash with descriptive message**: Always use `git stash push -m "message" -- <files>` with a descriptive message
-- **Mandatory title template**: Use the following template for stash messages:
+- **Already deleted files**: If a file is already deleted from the working directory, commit it as is without attempting to stash
+- **When you delete files**: Always follow this two-step process:
+  1. First, stash the file: `git stash push -m "message" -- <files>`
+  2. Then, remove the file: `git rm <files>`
+- **Never use rm or unlink directly**: Always use the git stash → git rm workflow
+- **Stash message template**: Use the following template when stashing deletions:
 
   ```text
   [Claude Code Deletion] <reason>
