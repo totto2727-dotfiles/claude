@@ -4,3 +4,6 @@ statsig/
 todos/
 .credentials.json
 *.local.*
+debug/
+file-history/
+history.jsonl
