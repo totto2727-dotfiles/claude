@@ -20,6 +20,7 @@
 - Keep output to the absolute minimum required
   - No excessive decoration or unnecessary specifications
 - **No Comments**: Never add comments unless explicitly instructed
+- **Typo Detection**: Always point out typos and errors found in existing code and documentation
 
 ### Code Analysis and Search
 
@@ -27,17 +28,30 @@
 
 ### File Deletion Rules
 
-- **Already deleted files**: If a file is already deleted from the working directory, commit it as is without attempting to stash
-- **When you delete files**: Always follow this two-step process:
-  1. First, stash the file: `git stash push -m "message" -- <files>`
-  2. Then, remove the file: `git rm <files>`
-- **Never use rm or unlink directly**: Always use the git stash → git rm workflow
-- **Stash message template**: Use the following template when stashing deletions:
+- **rm is strictly prohibited**: Never use `rm` or `unlink` commands
+- **Always use git stash before deletion**: Save files to git stash before removing them
 
-  ```text
-  [Claude Code Deletion] <reason>
-  Files: <file1>, <file2>, ...
-  ```
+#### Deletion Process
 
-  - Example: `[Claude Code Deletion] Remove deprecated API endpoints`
-  - Example: `[Claude Code Deletion] Clean up unused test fixtures`
+**For modified files (tracked & modified)**:
+
+1. Save changes: `git stash push -m "[Claude Code Deletion] <reason>" -- <files>`
+2. Remove file: `git rm <files>`
+
+**For new files (untracked)**:
+
+1. Stage file: `git add <files>`
+2. Save to stash: `git stash push -m "[Claude Code Deletion] <reason>" -- <files>`
+   (File is automatically removed from working tree after stashing)
+
+**Stash message template**:
+
+```text
+[Claude Code Deletion] <reason>
+Files: <file1>, <file2>, ...
+```
+
+Examples:
+
+- `[Claude Code Deletion] Remove deprecated API endpoints`
+- `[Claude Code Deletion] Clean up unused test fixtures`
